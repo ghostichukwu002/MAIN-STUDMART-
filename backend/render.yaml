@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: studmart
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: TOKEN_SECRET
+        generateValue: true
+      - key: FRONTEND_ORIGIN
+        sync: false
+      - key: DB_FILE
+        value: /var/data/db.json
+    disk:
+      name: studmart-data
+      mountPath: /var/data
+      sizeGB: 1
